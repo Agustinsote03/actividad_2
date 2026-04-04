@@ -14,6 +14,9 @@ def procesar_texto(texto):
         palabras = linea.split()
         cant_palabras += len(palabras)
     prom_palabras = cant_palabras / cant_lineas
+
+ #Se usa una función filter aprovechando la variable 'prom_palabras'. Usamos una función lambda para comprar cada palabra de la linea con linea.split()
+    lista_filtrada_por_promedio = list(filter(lambda linea: linea.split() > prom_palabras, lista_lineas))
     
-    return {"Palabras por línea: " : prom_palabras, "Cantidad de líneas: " : cant_lineas, "Cantidad de palabras: " : cant_palabras}
+    
 
