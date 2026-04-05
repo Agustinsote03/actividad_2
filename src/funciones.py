@@ -7,7 +7,7 @@ def convertir_duracion_a_segundos(duracion):
     duracion_enteros = duracion.split(":")
 
     #Se pasa todo a segundos
-    total_segundos = int(duracion_enteros[0] * 60) + int(duracion_enteros[1])
+    total_segundos = int(duracion_enteros[0]) * 60 + int(duracion_enteros[1])
 
     return total_segundos
 
@@ -61,12 +61,5 @@ def procesar_texto(texto):
     print("Líneas por encima del promedio (7.21 palabras): ")
     for linea in lista_filtrada_por_promedio:
         print(f"-{linea}")
-    
+
 #-------------------------EJERCICIO 2-------------------------#
-
-
-
-
-    
-    
-
