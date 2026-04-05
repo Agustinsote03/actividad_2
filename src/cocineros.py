@@ -30,7 +30,7 @@ def simular_competencia(rounds):
     
         # Se procesa el puntaje (Con la forma {'Valentina': {'judge_1': 8, 'judge_2': 7,'judge_3': 9}') 
 
-        resultados_ronda = list(map(lambda item: sumar_puntajes_jueces(item[1]), scores_ronda.items() ))
+        resultados_ronda = list(map(lambda item: (item[0], sumar_puntajes_jueces(item[1])), scores_ronda.items()))
         ganador = max(resultados_ronda, key=lambda x: x[1])
         nombre_ganador = ganador[0]
         puntos_ganador = ganador[1]
