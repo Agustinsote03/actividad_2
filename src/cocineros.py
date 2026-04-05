@@ -6,8 +6,37 @@ def sumar_puntajes_jueces(puntaje_jueces):
     total_puntos = sum(puntaje_jueces.values())
     return total_puntos
 
-def generar_tabla_posiciones(estadisticas):
-    pass
+def generar_tabla_posiciones(estadisticas,cant_rondas):
+    """
+     Esta función genera una tabla de posiciones a partir de las estadisticas de los cocineros y 'resultados_ronda'
+    """
+    #Se calcula el promedio de puntos por ronda para cada cocinero
+
+    final = []
+    for nombre, stats in estadisticas.items():
+        promedio_puntos = stats['total_puntos'] / cant_rondas
+        final.append((nombre, stats['total_puntos'], stats['rondas_ganadas'], stats['mejor_ronda'], promedio_puntos))
+    
+    #Se ordena la tabla por 'total_puntos' de forma descendente con sorted() y lambda
+
+    tabla_ordenada = sorted(final, key=lambda x: x[1], reverse=True)
+
+    #Se imprime la tabla de posiciones
+
+    print("Tabla de posiciones final:")
+    print()
+    print(f"{'Cocinero':<15} {'Total Puntos':<15} {'Rondas Ganadas':<15} {'Mejor Ronda':<15} {'Promedio Puntos/Ronda':<20}")
+    print("-" * 80)
+
+    for nombre_cocinero, total_puntos, rondas_ganadas, mejor_ronda, promedio in tabla_ordenada:
+        print(f"{nombre_cocinero:<15} {total_puntos:<15} {rondas_ganadas:<15} {mejor_ronda:<15} {promedio:<20.2f}")
+
+
+
+
+
+    
+
 #------------------------------SIMULACIÓN DE COMPETENCIA----------------------------#
 def simular_competencia(rounds):
     """
@@ -39,7 +68,7 @@ def simular_competencia(rounds):
         estadisticas[nombre_ganador]['rondas_ganadas'] += 1
 
         #Este bloque imprime la victoria
-        print(f"Ronda {ronda} - {tema}:")
+        print(f"Ronda {ronda_actual} - {tema}:")
         print(f"  Ganador: {nombre_ganador} ({puntos_ganador} pts)")
         print()
 
@@ -50,8 +79,9 @@ def simular_competencia(rounds):
 
             if puntos > estadisticas[nombre]['mejor_ronda']:
                 estadisticas[nombre]['mejor_ronda'] = puntos
+        ronda_actual += 1
         print()
-        generar_tabla_posiciones(estadisticas)
+    generar_tabla_posiciones(estadisticas,cant_rondas)
 
 
 
