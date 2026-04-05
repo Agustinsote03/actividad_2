@@ -141,5 +141,16 @@ def validar_email(email):
     
     return True
 
+def solicitar_email():
+    """
+    Solicita al usuario un email y lo valida utilizando la función validar_email. Si el email es inválido, se le solicita nuevamente hasta que ingrese uno correcto.
+    """
+
+    email_ingresado = input("Ingrese un email: ")
+    if validar_email(email_ingresado):
+        print("Email válido")
+    else:
+        print("Email inválido. Intente nuevamente.")
+
 
     
