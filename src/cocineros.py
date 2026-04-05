@@ -33,13 +33,14 @@ def generar_tabla_posiciones(estadisticas,cant_rondas):
 
 def imprimir_posiciones_por_ronda(resultados_ronda, ronda_actual, tema):
     """
-     Esta función imprime las posiciones de cada ronda
+     Esta función ordena las posiciones y las imprime las posiciones de cada ronda
     """
+    posiciones_ordenadas = sorted(resultados_ronda, key=lambda x: x[1], reverse=True)
     print(f"Ronda {ronda_actual} - {tema}:")
     print()
-
-    for (nombre,puntos) in resultados_ronda:
-        print(f"{nombre:<15} {puntos:<20.2f} pts")
+    print("Posiciones:")
+    for (nombre,puntos) in posiciones_ordenadas:
+        print(f"{nombre:<15} {puntos:<20}")
     print()
     
 
@@ -70,7 +71,7 @@ def simular_competencia(rounds):
         nombre_ganador = ganador[0]
         puntos_ganador = ganador[1]
 
-        #Se imprime la posición de cada cocinero en la ronda actual
+        #Se imprime imprime la tabla de posiciones de cada ronda
         imprimir_posiciones_por_ronda(resultados_ronda, ronda_actual, tema)
 
         #Se actualizan las estadísticas del ganador
