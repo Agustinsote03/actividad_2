@@ -1,3 +1,35 @@
+#-------------------------FUNCIONES AUXILIARES-------------------------#
+
+def convertir_duracion_a_segundos(duracion):
+    """
+     recibe un string con formato "m:ss" y retorna la duración total en segundos (enteros)
+    """
+    duracion_enteros = duracion.split(":")
+
+    #Se pasa todo a segundos
+    total_segundos = int(duracion_enteros[0] * 60) + int(duracion_enteros[1])
+
+    return total_segundos
+
+def calcular_e_imprimir_duracion(total_segundos):
+    """
+     recibe un entero con la duración total en segundos y calcula e imprime la duración total en horas, minutos y segundos.
+    """
+     #Se calculan horas, minutos y segundos
+
+    horas = total_segundos // 3600
+    minutos = (total_segundos % 3600) // 60
+    segundos = (total_segundos % 3600) % 60
+
+    print(f"Duración total de la playlist: {horas} horas, {minutos} minutos y {segundos} segundos.")
+    
+    
+    
+
+
+
+#-------------------------EJERCICIO 1-------------------------#
+
 def procesar_texto(texto):
     """
     La función recibe el texto contenido en el string, lo separa en saltos de linea que guarda en la lista 'lista_lineas' y por cada elementos de la
@@ -30,6 +62,11 @@ def procesar_texto(texto):
     for linea in lista_filtrada_por_promedio:
         print(f"-{linea}")
     
+#-------------------------EJERCICIO 2-------------------------#
+
+
+
+
     
     
 
