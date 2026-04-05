@@ -103,3 +103,43 @@ def filtrar_spoilers(review):
     print(texto_censurado)
     
 
+#-------------------------EJERCICIO 4-------------------------#
+
+def validar_email(email):
+    """
+    Valida si el email ingresado es correcto según los criterios de la cátedra utilizando métodos de cadenas
+    """
+
+    #Se verifica que contega exactamente un '@'
+    if email.count("@") != 1:
+        return False
+    
+    #Se verifica que no empiece ni termine con '@'
+    cond1 = ("@",".")
+    cond2 = ("@",".")
+    if email.startswith(cond1) or email.endswith(cond2):
+        return False
+    
+    #Dividimos el string en dos partes para comprobar su validez
+
+    partes = email.split("@")
+    antes_del_arroba = partes[0]
+    despues_del_arroba = partes[1]
+    
+    #Se verifica que contiene un caracter antes del '@'
+    if len(antes_del_arroba) < 1:
+        return False
+    
+    #Se tiene en cuenta si tiene un '.' después del arroba
+    if "." not in despues_del_arroba:
+        return False
+
+    #La parte después del último punto tiene al menos 2 caracteres
+    partes_dominio = despues_del_arroba.split(".")
+    if len(partes_dominio[-1]) < 2:
+        return False
+    
+    return True
+
+
+    
