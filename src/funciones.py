@@ -80,3 +80,26 @@ def procesar_playlist(playlist):
 
 
 #-------------------------EJERCICIO 3-------------------------#
+
+def filtrar_spoilers(review):
+    """
+       Esta función solicita las palabras spoiler y las reempleza por asteriscos en la reseña
+    """
+
+    # Se solicitan las palabras consideradas spoiler
+    entrada = input("Ingrese las palabras spoiler separadas por comas: ")
+
+    #Se crea una lista de palabras spoiler a partir de la entrada del usuario y se la normaliza quitando espacios y pasando a minuscula con map() y lambda
+    palabras_spoiler = entrada.split(",")
+    lista_de_spoilers = list(map(lambda palabra: palabra.strip().lower(), palabras_spoiler))
+
+    #Se itera por cada palabra de la reseña con review.split(), usando map() y lambda(). Se censura con '*' cada letra de la palabra si coincide con alguna de las palabras spoiler de la lista
+    resultado = list(map(lambda palabra: "*" * len(palabra) if palabra.lower() in lista_de_spoilers else palabra, review.split()))
+
+    #Se unen las palabras de la reseña con espacios y se imprime el texto con las palabras spoiler censuradas
+
+    texto_censurado = " ".join(resultado)
+    print()
+    print(texto_censurado)
+    
+
