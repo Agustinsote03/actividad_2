@@ -199,7 +199,38 @@ def ejecutar_calculadora_envio():
 
     resultado = calcular_costo_envio(peso, zona)
     print(resultado)
+
+#-------------------------EJERCICIO 6-------------------------#
+
+def analizar_hashtags(posts):
+    """
+     Extrae, cuenta y filtra los hashtafs de una lista de publicaciones
+    """
+
+    #Se concatenan los posts en un solo string y lo separamos por espacios
+
+    todas_las_palabras = " ".join(posts).split()
+
+    #Filtramos solo aquellas palabras que comiencen con el unmeral '#'
+    hashtags = list(filter(lambda palabra: palabra.startswith('#'), todas_las_palabras))
+
+    #Este bloque determina con que frecuencia aparecen cada hashtag utilizando un diccionario para contar las apariciones
     
-    
+    conteo = {h: hashtags.count(h) for h in set(hashtags)}
+    trending = dict(filter(lambda item: item[1] > 1, conteo.items()))
+
+    #Ordenamos la lista de hashtags de mayor a menor por frecuencia para armar un ranking de trending
+
+    ranking_trending = sorted(trending.items(), key= lambda item: item[1], reverse=True)
+
+    #Este bloque imprime los resultados
+
+    print("Hashtags encontrados:")
+    for (hashtag,frecuencia) in ranking_trending:
+        print(f"  {hashtag}: {frecuencia}")
+    print()
+    print(f"Total de hashtags únicos: {len(conteo)}")
+
+
 
 
