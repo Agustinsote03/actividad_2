@@ -11,6 +11,16 @@ def convertir_duracion_a_segundos(duracion):
 
     return total_segundos
 
+def determinar_categoria(peso):
+    """
+    Determina la categoría del peso según los criterios establecidos
+    """
+    if peso < 1:
+        return "bajo"
+    elif peso < 5:
+        return "medio"
+    else:
+        return "alto"
 
 
 
@@ -173,6 +183,10 @@ def calcular_costo_envio(peso, zona):
         return "Zona no válida. Las opciones son: local, nacional, internacional."
     
     #Se determina el costo según el peso
+    categoria = determinar_categoria(peso)
+    costo = tarifas[zona][categoria]
+
+    return (f"Costo de envío: ${costo}")
     
     
 
