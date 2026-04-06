@@ -1,3 +1,6 @@
+#-------------------------IMPORTACIONES-------------------------#
+import random
+
 #-------------------------FUNCIONES AUXILIARES-------------------------#
 
 def convertir_duracion_a_segundos(duracion):
@@ -230,6 +233,70 @@ def analizar_hashtags(posts):
         print(f"  {hashtag}: {frecuencia}")
     print()
     print(f"Total de hashtags únicos: {len(conteo)}")
+
+#-------------------------EJERCICIO 7-------------------------#
+
+def sortear_amigo_invisible():
+    """
+     -
+    """
+    entrada = input("Ingrese los participantes(Use una coma ',' como separador): ")
+
+    #Se normaliza la entrada
+    participantes = list(map(lambda amigo: amigo.strip().capitalize(), entrada.split(",")))
+
+
+    #Validaciones: se utiliza un conjunto para verificar que no haya participantes duplicados
+    participantes_unicos = set(participantes)
+
+    cant_participantes = len(participantes)
+
+    #Se valida la cantidad de participantes y son menos de 3 o hay repetidos se devuelve valor nulo
+    if cant_participantes < 3:
+        print("Error: Debe haber al menos 3 participantes")
+        return 
+    
+    if len(participantes_unicos) != cant_participantes:
+        print("Error: No puede haber participantes repetidos")
+        return
+    
+    #Este bloque hace el sorteo
+
+    while True:
+        parejas = []
+        receptores_disponibles = participantes.copy()
+        sorteo_valido = True
+        
+        for regalador in participantes:
+            receptor = random.choice(receptores_disponibles)
+            if receptor == regalador:
+                sorteo_valido = False
+                break
+    #Si es válido, se guarda la pareja en la lista parejas y se remueve de receptores disponibles
+            parejas.append( (regalador , receptor))
+            receptores_disponibles.remove(receptor)
+    
+    #Si se logra recorrer a todos los participantes sin problemas, se termina el sorteo
+        if sorteo_valido and len(parejas) == cant_participantes:
+            break
+    
+    #Este bloque imprime los resultados
+
+    print()
+    print("Sorteo de amigo invisible:")
+    for (regalador,receptor) in parejas:
+        print(f"{regalador} -> {receptor}")
+
+        
+
+
+
+
+    
+
+
+
+
 
 
 
