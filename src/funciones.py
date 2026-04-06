@@ -15,9 +15,9 @@ def determinar_categoria(peso):
     """
     Determina la categoría del peso según los criterios establecidos
     """
-    if peso < 1:
+    if peso <= 1:
         return "bajo"
-    elif peso < 5:
+    elif peso <= 5:
         return "medio"
     else:
         return "alto"
@@ -171,8 +171,8 @@ def calcular_costo_envio(peso, zona):
     #Se crea la tabla de precios en un diccionarios con las tarifas segun la zona y el peso
     tarifas = {
         "local": {"bajo": 500, "medio":1000, "alto":2000},
-        "nacional": {"bajo": 1000, "medio":2500, "alto":5000},
-        "internacional": {"bajo": 2000, "medio":4500,"alto":8000}
+        "regional": {"bajo": 1000, "medio":2500, "alto":5000},
+        "nacional": {"bajo": 2000, "medio":4500,"alto":8000}
     }
 
     #Normalizamos la entrada de zona
@@ -180,13 +180,25 @@ def calcular_costo_envio(peso, zona):
 
     #Verificamos que la zona exista
     if zona not in tarifas.keys():
-        return "Zona no válida. Las opciones son: local, nacional, internacional."
+        return "Zona no válida. Las opciones son: local, regional, nacional."
     
     #Se determina el costo según el peso
     categoria = determinar_categoria(peso)
     costo = tarifas[zona][categoria]
 
     return (f"Costo de envío: ${costo}")
+
+def ejecutar_calculadora_envio():
+    """
+    Solicita los datos, los convierte al tipo correcto e imprime el resultado
+    """
+    
+    #Se solicita el peso y la zona
+    peso = float(input("Ingrese el peso del paquete en kg: "))
+    zona = input("Ingrese la zona de envío (local, regional, nacional): ")
+
+    resultado = calcular_costo_envio(peso, zona)
+    print(resultado)
     
     
 
