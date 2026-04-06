@@ -304,7 +304,20 @@ def cifrar_mensaje(mensaje, desplazamiento):
     return "".join(caracteres_cifrados)
 
 
+def ejecutar_cifrado():
+    """
+    Solicita los datos e imprime el mensaje cifrado y descifrado a partir de la funcion 'cifrar_mensaje'
+    """
     
+    mensaje = input("Ingrese un mensaje: ")
+    desplazamiento = int(input("Ingrese el desplazamiento: "))
+    
+    
+    mensaje_cifrado = cifrar_mensaje(mensaje, desplazamiento)
+    mensaje_descifrado = cifrar_mensaje(mensaje_cifrado, -desplazamiento)
+    
+    print(f"Mensaje cifrado: {mensaje_cifrado}")
+    print(f"Mensaje descifrado: {mensaje_descifrado}") 
 
 
 
