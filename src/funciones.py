@@ -166,7 +166,7 @@ def solicitar_email():
 
 def calcular_costo_envio(peso, zona):
     """
-    -
+     Calcula el costo de envío según el peso y la zona utilizando una tabla de tarifas (Diccionario anidado)
     """
     #Se crea la tabla de precios en un diccionarios con las tarifas segun la zona y el peso
     tarifas = {
