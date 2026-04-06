@@ -287,9 +287,21 @@ def sortear_amigo_invisible():
     for (regalador,receptor) in parejas:
         print(f"{regalador} -> {receptor}")
 
-        
+#-------------------------EJERCICIO 8-------------------------#
+def cifrar_mensaje(mensaje, desplazamiento):
+    """
+      Esta función cifra o descifra un mensaje utilizando el cifrado César.
+      Se preservan las mayúsculas, minúsculas y los caracteres especiales
+    """
+    #Se definen cadenas base para buscar los índice y desplazar
+    minus = "abcdefghijklmnopqrstuvwxyz"
+    mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+    caracteres_cifrados = map(lambda char: minus[(minus.index(char) + desplazamiento) % 26] if char in minus else (mayus[(mayus.index(char) + desplazamiento) % 26] if char in mayus else char), mensaje)
 
+    #Se unen todos los char cifrados en un string con .join
+
+    return "".join(caracteres_cifrados)
 
 
     
