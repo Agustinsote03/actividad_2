@@ -47,7 +47,7 @@ def imprimir_posiciones_por_ronda(resultados_ronda, ronda_actual, tema):
 #------------------------------SIMULACIÓN DE COMPETENCIA----------------------------#
 def simular_competencia(rounds):
     """
-     simulacion
+     Esta función simula la competencia de cocina procesando cada ronda de la lista 'rounds', genera las estadísticas para todos los cocineros (competidores) y se actualiza en cada ronda
     """
 
     #De la ronda 0, se obtiene el nombre de los cocineros (las 'keys' del diccionario) y se guardan en la variable cocineros
