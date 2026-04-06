@@ -152,5 +152,28 @@ def solicitar_email():
     else:
         print("Email inválido. Intente nuevamente.")
 
+#-------------------------EJERCICIO 5-------------------------#
 
+def calcular_costo_envio(peso, zona):
+    """
+    -
+    """
+    #Se crea la tabla de precios en un diccionarios con las tarifas segun la zona y el peso
+    tarifas = {
+        "local": {"bajo": 500, "medio":1000, "alto":2000},
+        "nacional": {"bajo": 1000, "medio":2500, "alto":5000},
+        "internacional": {"bajo": 2000, "medio":4500,"alto":8000}
+    }
+
+    #Normalizamos la entrada de zona
+    zona = zona.strip().lower()
+
+    #Verificamos que la zona exista
+    if zona not in tarifas.keys():
+        return "Zona no válida. Las opciones son: local, nacional, internacional."
     
+    #Se determina el costo según el peso
+    
+    
+
+
